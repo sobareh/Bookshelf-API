@@ -144,13 +144,7 @@ const getAllBooksHandler = (request, h) => {
   }
 
   if (name) {
-    const resultSearch = _.find(books, (result) => {
-      return _.find(result.name, (item) => {
-         return item.name.toLowerCase() === name.toLowerCase();
-      });
-   });
-
-    console.log(resultSearch);
+    const resultSearch = books.filter(item => item.name.toLowerCase().indexOf(name.toLowerCase()) > -1);
 
     const response = h
       .response({
