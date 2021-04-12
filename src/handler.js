@@ -1,10 +1,6 @@
 const { nanoid } = require('nanoid');
-const _ = require('lodash');
 const books = require('./books');
 
-// @route   POST localhost/books
-// @desc    Add New Book
-// @access  Public
 const addBookHandler = (request, h) => {
   const {
     name,
@@ -91,16 +87,11 @@ const addBookHandler = (request, h) => {
   return response;
 };
 
-// @route   GET localhost/books
-// @desc    Get List of All Books
-// @access  Public
 const getAllBooksHandler = (request, h) => {
   const { reading, finished, name } = request.query;
 
   if (reading) {
-    const listReadBook =
-      // eslint-disable-next-line eqeqeq
-      reading == 1
+    const listReadBook = reading == 1
         ? books.filter((book) => book.reading === true)
         : books.filter((book) => book.reading === false);
 
@@ -121,9 +112,7 @@ const getAllBooksHandler = (request, h) => {
   }
 
   if (finished) {
-    const listReadBook =
-      // eslint-disable-next-line eqeqeq
-      finished == 1
+    const listReadBook = finished == 1
         ? books.filter((book) => book.finished === true)
         : books.filter((book) => book.finished === false);
 
@@ -174,9 +163,7 @@ const getAllBooksHandler = (request, h) => {
   };
 };
 
-// @route   GET localhost/books/{id}
-// @desc    Get Detail book by bookId
-// @access  Public
+
 const getBookByIdHandler = (request, h) => {
   const { bookId } = request.params;
 
